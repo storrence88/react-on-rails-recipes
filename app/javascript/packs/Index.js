@@ -12,7 +12,5 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import App from '../components/App';
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('HIT');
-  console.log(<App />);
   ReactDOM.render(<App />, document.body.appendChild(document.createElement('div')));
 });
