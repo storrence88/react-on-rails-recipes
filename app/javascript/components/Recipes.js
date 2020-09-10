@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Recipes = () => {
   const [recipes, setRecipes] = useState([]);
+
   useEffect(() => {
     const url = '/api/v1/recipes';
     fetch(url)
@@ -29,6 +30,7 @@ const Recipes = () => {
       </div>
     </div>
   ));
+
   const noRecipe = (
     <div className='vw-100 vh-50 d-flex align-items-center justify-content-center'>
       <h4>
