@@ -3,8 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from '../components/Home';
 import Recipes from '../components/Recipes';
 
-console.log('In routes');
-
 export default (
   <Router>
     <Switch>

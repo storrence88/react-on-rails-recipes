@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const Recipes = () => {
-  console.log('HIT');
   const [recipes, setRecipes] = useState([]);
   useEffect(() => {
     const url = '/api/v1/recipes';
