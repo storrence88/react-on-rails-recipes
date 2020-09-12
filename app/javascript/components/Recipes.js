@@ -14,7 +14,7 @@ const Recipes = () => {
         throw new Error('Network response was not ok.');
       })
       .then((response) => setRecipes(response))
-      .catch(() => this.props.history.push('/'));
+      .catch(() => props.history.push('/'));
   }, []);
 
   const allRecipes = recipes.map((recipe, index) => (
