@@ -7,23 +7,27 @@ const Recipe = (props) => {
 
   useEffect(() => {
     console.log('Inside useEffect');
-    const {
-      match: {
-        params: { id }
-      }
-    } = props;
-    const url = `/api/v1/recipe/${id}`;
-    console.log(url);
-
-    fetch(url)
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
+    async function getRecipe() {
+      const {
+        match: {
+          params: { id }
         }
-        throw new Error('Network response was not ok.');
-      })
-      .then((response) => setRecipe(response))
-      .catch(() => props.history.push('/recipes'));
+      } = props;
+      const url = `/api/v1/recipe/${id}`;
+
+      console.log(url);
+
+      await fetch(url)
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          }
+          throw new Error('Network response was not ok.');
+        })
+        .then((response) => setRecipe(response))
+        .catch(() => props.history.push('/recipes'));
+    }
+    getRecipe();
   }, []);
 
   console.log(recipe);
