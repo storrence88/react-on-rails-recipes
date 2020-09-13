@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import Home from '../components/Home';
 import Recipes from '../components/Recipes';
 import Recipe from '../components/Recipe';
@@ -12,6 +12,7 @@ export default (
       <Route path='/recipes' exact component={Recipes} />
       <Route path='/recipe/:id' exact component={Recipe} />
       <Route path='/recipe' exact component={NewRecipe} />
+      <Redirect to='/' />
     </Switch>
   </Router>
 );
