@@ -43,6 +43,35 @@ const Recipe = (props) => {
     ));
   }
 
+  const deleteRecipe = () => {
+    var result = confirm('Are you sure?');
+    if (result) {
+      const {
+        match: {
+          params: { id }
+        }
+      } = props;
+      const url = `/api/v1/recipe/${id}`;
+      const token = document.querySelector('meta[name="csrf-token"]').content;
+
+      fetch(url, {
+        method: 'DELETE',
+        headers: {
+          'X-CSRF-Token': token,
+          'Content-Type': 'application/json'
+        }
+      })
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          }
+          throw new Error('Network response was not ok.');
+        })
+        .then(() => props.history.push('/recipes'))
+        .catch((error) => console.log(error.message));
+    }
+  };
+
   const recipeInstruction = addHtmlEntities(recipe.instructions);
 
   return (
@@ -73,7 +102,7 @@ const Recipe = (props) => {
             />
           </div>
           <div className='col-sm-12 col-lg-2'>
-            <button type='button' className='btn btn-danger'>
+            <button type='button' className='btn btn-danger' onClick={deleteRecipe}>
               Delete Recipe
             </button>
           </div>
